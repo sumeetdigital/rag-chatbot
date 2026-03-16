@@ -37,12 +37,7 @@ def load_db():
 with st.sidebar:
     st.title("⚙️ Settings")
 
-    api_key = st.text_input(
-        "Anthropic API Key",
-        type="password",
-        placeholder="sk-ant-...",
-        help="Get your key from console.anthropic.com"
-    )
+    api_key = st.secrets.get("ANTHROPIC_API_KEY", "")
 
     n_chunks = st.slider("Chunks to retrieve", min_value=1, max_value=5, value=2,
                          help="How many document chunks to send to Claude")
